@@ -7,4 +7,4 @@ Shaik Hazare Khaja Mohiddin
 Hand gesture recognition is essential for human-computer interaction, enabling touchless control in various applications. This project utilizes deep learning models, including CNNs and RNNs, to enhance recognition accuracy and real-time performance. Advanced preprocessing and feature extraction techniques are applied to improve robustness across different environments.
 
 **Dataset**
-https://data.mendeley.com/datasets/8ffrgcmjkm/2)](https://data.mendeley.com/datasets/8ffrgcmjkm/2
+https://data.mendeley.com/datasets/8ffrgcmjkm/2
