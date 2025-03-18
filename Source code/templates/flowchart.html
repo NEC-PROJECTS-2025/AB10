@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <!-- Page Title -->
+  <h1 class="text-center text-primary mb-4">Dynamic Gesture Recognition Workflow</h1>
+
+  <!-- Introduction Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <p class="lead text-center">
+        This project focuses on dynamic hand gesture recognition using a hybrid deep learning model. 
+        By integrating CNNs for spatial feature extraction and LSTMs for temporal sequence modeling, 
+        it achieves superior results with a test accuracy of 95.59%. The following workflow outlines the steps involved, 
+        from data collection to deployment.
+      </p>
+    </div>
+  </div>
+
+  <!-- Flowchart Section -->
+  <div class="card shadow p-4 mb-4">
+    <h2 class="text-center text-secondary mb-3">Workflow Diagram</h2>
+    <div class="text-center">
+      <div class="flowchart-container d-inline-block">
+        <!-- Mermaid Flowchart -->
+        <div class="mermaid">
+          graph TD
+          A[Start] --> B[Data Collection]
+          B --> C[Data Preprocessing]
+          C --> D[Feature Extraction using Inception-v3]
+          D --> E[Sequence Modeling with LSTM]
+          E --> F[Model Training]
+          F --> G[Perform K-Fold Cross-Validation]
+          G --> H[Model Evaluation]
+          H --> I[Generate Metrics: Accuracy, F1-Score, AUC-ROC]
+          I --> J[Analyze Confusion Matrix]
+          J --> K[Deploy Model for Real-World Applications]
+          K --> L[End]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Description Section -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Key Workflow Steps</h5>
+          <ul>
+            <li><strong>Data Collection:</strong> RGB gesture video sequences of six gestures (scroll-left, scroll-right, scroll-up, scroll-down, zoom-in, zoom-out).</li>
+            <li><strong>Preprocessing:</strong> Frames resized to 120x160, normalized, and sampled for efficiency.</li>
+            <li><strong>Feature Extraction:</strong> CNN (Inception-v3) extracts spatial features from each frame.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Performance Insights</h5>
+          <ul>
+            <li><strong>Model Accuracy:</strong> Achieved a test accuracy of 95.59%.</li>
+            <li><strong>Metrics:</strong> F1-score of 0.94, AUC-ROC of 0.95.</li>
+            <li><strong>Challenges:</strong> Misclassification between visually similar gestures like zoom-in and zoom-out.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conclusion -->
+  <div class="card shadow mt-4">
+    <div class="card-body">
+      <h3 class="text-secondary">Conclusion</h3>
+      <p>
+        This project successfully demonstrates the application of deep learning for dynamic hand gesture recognition. 
+        The hybrid architecture, combining Inception-v3 and LSTM, offers a balance between accuracy and computational efficiency. 
+        Future work could focus on augmenting data, optimizing for mobile devices, and reducing misclassification rates.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Include Mermaid.js -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+{% endblock %}

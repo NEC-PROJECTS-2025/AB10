@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">How It Works: Dynamic Hand Gesture Recognition</h2>
+
+    <!-- Step 1: Data Preprocessing -->
+    <div class="mb-4">
+        <h3>1. Data Preprocessing</h3>
+        <p>
+            <strong>Input Preparation:</strong> The dataset consists of video sequences representing dynamic hand gestures, where each gesture sequence contains 40 frames.
+        </p>
+        <p>
+            <strong>Frame Extraction and Resizing:</strong> Frames are extracted from the video, resized to a uniform shape of <code>(120, 160, 3)</code> (height, width, and RGB channels), and normalized for consistent input quality.
+        </p>
+        <p>
+            <strong>Dimensionality:</strong> The processed input data is represented as a 4D tensor with dimensions <code>(batch size, 10 frames, height, width, channels)</code> for model input.
+        </p>
+        <!-- Image for Step 1 -->
+        <img src="./static/about1.png" alt="Data Preprocessing Diagram" class="img-fluid mt-3">
+    </div>
+
+    <!-- Step 2: Hybrid Architecture -->
+    <div class="mb-4">
+        <h3>2. Hybrid Architecture</h3>
+        <p>The model combines <strong>Convolutional Neural Networks (CNNs)</strong> for spatial feature extraction and <strong>Long Short-Term Memory (LSTM)</strong> layers for temporal sequence modeling.</p>
+
+        <h4>Feature Extraction Using CNN (Inception-v3)</h4>
+        <ul>
+            <li><strong>Inception-v3 Backbone:</strong> Pre-trained Inception-v3 extracts spatial features from each frame.</li>
+            <li><strong>Feature Dimensionality:</strong> Each frame is passed through the CNN to produce a feature vector of size <code>2048</code>.</li>
+            <li><strong>Sequential Representation:</strong> These feature vectors are stacked into a temporal sequence, resulting in an input shape of <code>(batch size, 10 frames, 2048 features)</code>.</li>
+        </ul>
+
+        <h4>Temporal Modeling Using LSTM</h4>
+        <ul>
+            <li><strong>Recurrent Processing:</strong> The sequence of feature vectors is fed into LSTM layers, which capture temporal dependencies and motion patterns over time.</li>
+            <li><strong>Temporal Context:</strong> LSTM layers effectively learn the relationships between frames to distinguish gestures based on movement and sequence.</li>
+        </ul>
+        <!-- Image for Step 2 -->
+        <img src="./static/about2.png" alt="Hybrid Architecture Diagram" class="img-fluid mt-3" style="max-width: 100%; height: auto;">
+
+
+    </div>
+
+    <!-- Step 3: Classification -->
+    <div class="mb-4">
+        <h3>3. Classification</h3>
+        <p>
+            <strong>Fully Connected Layer:</strong> The output from the LSTM layers is passed to a dense layer for classification.
+        </p>
+        <p>
+            <strong>Softmax Activation:</strong> A softmax function outputs probabilities for each of the six gesture classes (e.g., scroll-left, scroll-right, scroll-up, scroll-down, zoom-in, and zoom-out).
+        </p>
+        
+    </div>
+
+ <!-- Results Section -->
+ <div class="mb-4">
+    <h3>4. Results</h3>
+    <p>The proposed model achieves a remarkable test accuracy of 95.59%, with an F1 score of 0.94 and an AUC-ROC of 0.95, demonstrating its effectiveness in recognizing dynamic hand gestures in real-world settings. These results highlight the model's suitability for diverse applications, including interactive gaming, virtual reality, human-computer interaction, and hands-free device control. With further advancements, such as implementing robust data augmentation, optimizing architectures for mobile devices, and exploring attention mechanisms, the model is poised to enhance its performance and adaptability to handle more complex and diverse gesture scenarios</p>
+    <p>
+        <strong>Metrics:</strong> You can review the performance metrics and evaluation results by following the link below:
+        <br>
+        <a href="/metrics" class="btn btn-primary mt-3">View Model Metrics</a>
+    </p>
+    <!-- Images for Results Section -->
+    <div class="d-flex justify-content-center mt-3">
+        <img src="./static/about41.png" alt="Results Image 1" class="img-fluid mr-3" style="max-width: 45%; max-height: 300px;">
+        <img src="./static/about42.png" alt="Results Image 2" class="img-fluid" style="max-width: 45%; max-height: 300px;">
+    </div>
+    
+</div>
+
+<!-- Further Improvements Section -->
+<div class="mb-4">
+    <h3>5. Future Improvements</h3>
+    <p>
+        <strong>Additional Gesture Recognition:</strong> More gesture classes can be added to make the system more versatile, including specific gestures for various industries like healthcare and robotics.
+    </p>
+    <p>
+        <strong>Real-Time Feedback:</strong> The model can be further optimized to handle real-time gesture recognition with low latency for enhanced user experience in applications.
+    </p>
+    <!-- Image for Future Improvements -->
+    
+</div>
+</div>
+
+</div>
+{% endblock %}

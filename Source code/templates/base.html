@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Recognition: Enhancing Accuracy and Precision with Deep Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    
+    
+    <style>
+/* Header styling */
+header {
+    background-color: #343a40; /* Dark background for header */
+    color: #fff; /* White text */
+    padding: 20px 0;
+    margin-bottom: 0; /* Remove any bottom margin */
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+header img {
+    height: 60px; /* Adjust logo size */
+    margin-right: 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+}
+
+/* Navbar styling */
+.navbar {
+    margin-top: -10px; /* Reduce the gap above the navbar */
+    padding-top: 0; /* Remove padding from top of navbar */
+    padding-bottom: 10;
+    margin-bottom: 0; /* Remove padding from bottom of navbar */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff !important;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+/* Responsive styling */
+@media (max-width: 767px) {
+    header .container {
+        justify-content: center; /* Center the logo and text on small screens */
+        text-align: center;
+    }
+    header img {
+        height: 80px; /* Adjust logo size for small screens */
+    }
+    .navbar-nav {
+        justify-content: center; /* Center the navbar links on small screens */
+    }
+}
+
+    </style>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <img src="/static/logo.jpeg" alt="Logo">
+            <div>
+                <h1>Hand Gesture Recognition: Enhancing Accuracy and Precision with Deep Learning</h1>
+                <p><strong>Team Members:</strong> K. Srinivasa Kalyan Ram, T.Venkata Aravind, SK.Khaja Mohiddin &nbsp;
+                <strong>Guide:</strong> T.G. Ramnadh Babu sir&nbsp;
+                <strong>Mentor:</strong> D.Venkata Reddy sir</p>
+            </div>
+        </div>
+    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/about' %}active{% endif %}" href="/about">About Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/project' %}active{% endif %}" href="/project">Prediction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/metrics' %}active{% endif %}" href="/metrics">Metrics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/flowchart' %}active{% endif %}" href="/flowchart">Flowchart</a>
+                </li>
+            </ul>
+        </div>
+    </nav></head>
+    <body>
+    
+        {% block content %}{% endblock %}
+    
+
+    <!-- Add Bootstrap and optional JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

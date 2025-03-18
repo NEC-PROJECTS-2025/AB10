@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Select a Gesture and Sequence from the Dataset</h2>
+    <form method="POST">
+        <!-- Gesture Selection -->
+        <div class="form-group">
+            <label for="gesture">Choose Gesture:</label>
+            <select name="gesture" id="gesture" class="form-control" onchange="this.form.submit()">
+                <option value="">-- Select Gesture --</option>
+                {% for gesture in gestures %}
+                    <option value="{{ gesture }}" {% if gesture == selected_gesture %}selected{% endif %}>
+                        {{ gesture }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Sequence Selection -->
+        <div class="form-group">
+            <label for="sequence">Choose Sequence:</label>
+            <select name="sequence" id="sequence" class="form-control">
+                <option value="">-- Select Sequence --</option>
+                {% for sequence in sequences %}
+                    <option value="{{ sequence }}" {% if sequence == selected_sequence %}selected{% endif %}>
+                        {{ sequence }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Display Sequence Images -->
+        <div class="form-group">
+            <h4>Sequence Images:</h4>
+            <div class="row">
+                {% for image in sequence_images %}
+                    <div class="col-md-3 mb-3">
+                        <img src="{{ image }}" alt="Sequence Image" class="img-fluid img-thumbnail">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Analyze Button -->
+        <button type="submit" class="btn btn-success">Analyze</button>
+    </form>
+
+    <hr>
+
+    <!-- Upload New Images -->
+    <h2 class="mb-4 text-center">Upload Images for Prediction</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="files">Upload 40 Images:</label>
+            <input type="file" name="files" id="files" multiple class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Predict</button>
+        {% if error %}
+            <p class="text-danger mt-2">{{ error }}</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

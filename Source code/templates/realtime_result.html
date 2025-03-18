@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Result</title>
+</head>
+<body>
+    <h1>Video Properties</h1>
+    <ul>
+        <li>Total Frames: {{ video_properties['Total Frames'] }}</li>
+        <li>FPS: {{ video_properties['FPS'] }}</li>
+        <li>Width: {{ video_properties['Width'] }}</li>
+        <li>Height: {{ video_properties['Height'] }}</li>
+        <li>Duration: {{ video_properties['Duration'] }} seconds</li>
+    </ul>
+
+    <h1>Captured Frames</h1>
+    <div>
+        {% for frame in frames %}
+            <img src="{{ frame }}" alt="Frame {{ loop.index }}" style="width: 160px; height: 120px; margin: 5px;">
+        {% endfor %}
+    </div>
+
+    <h1>Prediction</h1>
+    <p>{{ prediction }}</p>
+
+    <a href="/realtime">Back to Capture</a>
+</body>
+</html>
+
+
+{% endblock %}

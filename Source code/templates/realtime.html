@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Video</title>
+</head>
+<body>
+    <h1>Capture Video</h1>
+    <video id="video" autoplay></video>
+    <button id="start">Start Recording</button>
+    <form id="uploadForm" method="POST" action="/realtime" enctype="multipart/form-data">
+        <input type="file" id="videoInput" name="video" style="display:none;" />
+        <button type="submit" id="uploadButton" disabled>Upload</button>
+    </form>
+
+    <script>
+        let mediaRecorder;
+        let chunks = [];
+        const videoElement = document.getElementById('video');
+        const startButton = document.getElementById('start');
+        const uploadButton = document.getElementById('uploadButton');
+        const videoInput = document.getElementById('videoInput');
+        const uploadForm = document.getElementById('uploadForm');
+
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+            .then(stream => {
+                videoElement.srcObject = stream;
+
+                mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/mp4' });
+                mediaRecorder.ondataavailable = e => chunks.push(e.data);
+                mediaRecorder.onstop = e => {
+                    const blob = new Blob(chunks, { type: 'video/mp4' });
+                    const file = new File([blob], 'captured_video.mp4', { type: 'video/mp4' });
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    videoInput.files = dataTransfer.files;
+
+                    chunks = [];
+                    uploadButton.disabled = false;
+
+                    // Auto-submit the form after stopping the recording
+                    uploadForm.submit();
+                };
+
+                startButton.addEventListener('click', () => {
+                    mediaRecorder.start();
+                    startButton.disabled = true;
+
+                    // Auto stop after 1.7 seconds
+                    setTimeout(() => {
+                        mediaRecorder.stop();
+                        startButton.disabled = false;
+                    }, 1200); // Stop after 1.7 seconds
+                });
+            })
+            .catch(err => console.error('Error accessing media devices.', err));
+    </script>
+</body>
+</html>
+{% endblock %}

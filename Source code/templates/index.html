@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="unique-style-body">
+    <div class="unique-title-animation">
+        <h1 id="animated-text">Welcome to Hand Gesture Recognition</h1>
+    </div>
+
+    <div class="unique-section">
+        <img src="{{ url_for('static', filename='sec1.webp') }}" alt="About Project">
+        <div class="unique-content">
+            <h2>About the Project</h2>
+            <p>Our Hand Gesture Recognition project leverages cutting-edge deep learning architectures to classify dynamic hand gestures accurately.</p>
+            <a class="unique-learn-more" href="/about">Learn More</a>
+        </div>
+    </div>
+
+    <div class="unique-section">
+        <img src="{{ url_for('static', filename='sec2.webp') }}" alt="Prediction">
+        <div class="unique-content">
+            <h2>Prediction</h2>
+            <p>Using advanced neural networks, our system predicts hand gestures with high precision, enabling seamless interaction in various scenarios.</p>
+            <a class="unique-learn-more" href="/project">Learn More</a>
+        </div>
+    </div>
+
+    <div class="unique-section">
+        <img src="{{ url_for('static', filename='sec3.png') }}" alt="Metrics">
+        <div class="unique-content">
+            <h2>Performance Metrics</h2>
+            <p>Our model achieves impressive accuracy, precision, and recall metrics, demonstrating robust performance across diverse datasets.</p>
+            <a class="unique-learn-more" href="/metrics">Learn More</a>
+        </div>
+    </div>
+
+    <div class="unique-section">
+        <img src="{{ url_for('static', filename='sec4.png') }}" alt="Flowchart">
+        <div class="unique-content">
+            <h2>Workflow</h2>
+            <p>The workflow diagram illustrates the step-by-step process of our gesture recognition system, from data preprocessing to prediction.</p>
+            <a class="unique-learn-more" href="/flowchart">Learn More</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .unique-style-body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #fff;
+        background: url('{{ url_for("static", filename="banner.jpg") }}') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .unique-title-animation {
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px; /* Add some padding to avoid the text being too close to the edge */
+    }
+
+    .unique-title-animation h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #fff;
+        opacity: 0;
+        animation: fadeIn 3s ease-in-out forwards, glow 2s 3s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes glow {
+        0% {
+            text-shadow: 0 0 5px #007BFF, 0 0 10px #007BFF, 0 0 15px #0056b3, 0 0 20px #0056b3;
+        }
+        100% {
+            text-shadow: 0 0 10px #007BFF, 0 0 15px #007BFF, 0 0 20px #0056b3, 0 0 25px #0056b3;
+        }
+    }
+
+    .unique-section {
+        display: flex;
+        margin: 40px auto;
+        max-width: 1200px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        flex-wrap: wrap;
+    }
+
+    .unique-section:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .unique-section img {
+        max-width: 500px;
+        min-width: 500px;
+        max-height: 300px;
+        min-height: 300px;
+        height: auto;
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .unique-section .unique-content {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .unique-section .unique-content h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .unique-section .unique-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .unique-section .unique-content .unique-learn-more {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .unique-section .unique-content .unique-learn-more:hover {
+        background-color: #0056b3;
+    }
+
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+        .unique-title-animation h1 {
+            font-size: 2.5rem; /* Reduce font size for smaller screens */
+            text-align: center; /* Center the text */
+            padding: 0 20px; /* Add padding for spacing on mobile */
+        }
+
+        .unique-section {
+            flex-direction: column; /* Stack the content and image vertically */
+            margin: 20px;
+        }
+
+        .unique-section img {
+            max-width: 100%;
+            min-width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .unique-section .unique-content {
+            text-align: center;
+        }
+
+        .unique-section .unique-content h2 {
+            font-size: 1.5rem;
+        }
+
+        .unique-section .unique-content p {
+            font-size: 0.9rem;
+        }
+
+        .unique-section .unique-content .unique-learn-more {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .unique-title-animation h1 {
+            font-size: 2rem; /* Further reduce font size for very small screens */
+        }
+    }
+</style>
+{% endblock %}

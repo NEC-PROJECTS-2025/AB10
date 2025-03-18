@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Video</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .video-preview {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Record Video for Gesture Recognition</h1>
+        <form action="{{ url_for('realtime') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="video">Upload a Video</label>
+                <input type="file" class="form-control-file" name="video" accept="video/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Start Video</button>
+        </form>
+
+        {% if prediction %}
+        <h2 class="mt-4">Prediction: {{ prediction }}</h2>
+        <h3>Frames:</h3>
+        <div class="row">
+            {% for frame in frames %}
+            <div class="col-md-3">
+                <img src="{{ frame }}" class="img-fluid">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
